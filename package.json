@@ -1,0 +1,38 @@
+{
+  "name": "xiaomi-push",
+  "version": "0.0.1",
+  "description": "小米推送服务端Node SDK",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isayme/xiaomi-push.git"
+  },
+  "keywords": [
+    "xiaomi",
+    "push",
+    "MiPush",
+    "notification"
+  ],
+  "author": "iSayme <isaymeorg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isayme/xiaomi-push/issues"
+  },
+  "homepage": "https://github.com/isayme/xiaomi-push#readme",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1",
+    "urllib": "^2.4.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.0",
+    "moment": "^2.10.6",
+    "chai": "^3.2.0"
+  }
+}
