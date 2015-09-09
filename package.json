@@ -1,6 +1,6 @@
 {
   "name": "xiaomi-push",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "小米推送服务端Node SDK",
   "main": "index.js",
   "directories": {
@@ -31,7 +31,8 @@
     "urllib": "^2.4.0"
   },
   "devDependencies": {
+    "chai": "^3.2.0",
     "mocha": "^2.3.0",
-    "chai": "^3.2.0"
+    "moment": "^2.10.6"
   }
 }

@@ -2,6 +2,8 @@ var MiPush = require('../lib');
 var Message = MiPush.Message;
 var Notification = MiPush.Notification;
 
+var config = require('./config');
+
 var msg = new Message();
 msg
   .title('title example')
@@ -11,12 +13,16 @@ msg
   .extra('badge', 6);
 
 var notification = new Notification({
-  env: 'offical',
-  appSecret: 'your secret key'
+  production: config.production,
+  appSecret: config.appSecret
 });
 
-var regid = 'one of your regid';
+var regid = config.regids[0];
 
 notification.send(regid, msg, function() {
   console.log(JSON.stringify(arguments, null, 2));
 });
+
+// notification.sendToAll(msg, function() {
+//   console.log(JSON.stringify(arguments, null, 2));
+// });

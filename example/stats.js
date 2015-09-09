@@ -1,8 +1,13 @@
+var moment = require('moment');
+
 var Stats = require('../lib').Stats;
+var config = require('./config');
 
-var s = new Stats('your secret key');
+var s = new Stats(config.appSecret);
 
-s.getStats('20150801', '20150830', function(err, data) {
+var startDate = moment().subtract(7, 'days').format('YYYYMMDD');
+var endDate = moment().format('YYYYMMDD');
+s.getStats(startDate, endDate, function(err, data) {
   if (err) {
     return console.log(err.message, err.code);
   }
