@@ -9,7 +9,8 @@ msg
   .title('title example')
   .description('description example')
   .payload('payload description')
-  .passThrough(1)
+  .passThrough(0)
+  .notifyType(-1)
   .extra('badge', 6);
 
 var notification = new Notification({

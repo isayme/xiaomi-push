@@ -1,7 +1,8 @@
 module.exports = {
   production: true,
+  restrictedPackageName: 'org.isayme.pushdemo',
   appSecret: 'fnMrpxXI+BsZEhnmz4OuWg==',
   regids: [
-    'd//igwEhgBGCI2TG6lWqlGn8M1ph6bjr4BtnhCZRe0TYo2FsNWg2uRS+xk+vSujFKC3Vhfv3zZ7mQNDq3KvM/M7OMhjklzutNbu8ZVxOZRA='
+    'd//igwEhgBGCI2TG6lWqlGn8M1ph6bjr4BtnhCZRe0Rb8+ZP0k6fhlIdnC4N2w7hLrlThrzoYjG9In/wojTjsv0OemEa0YpmoWCTD8X7mCg='
   ]
 };
