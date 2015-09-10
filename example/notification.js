@@ -20,16 +20,12 @@ var notification = new Notification({
 
 var regid = config.regids[0];
 
-function callback() {
-  console.log(JSON.stringify(arguments, null, 2));
-}
+notification.send(regid, msg, config.callback);
 
-notification.send(regid, msg, callback);
+// notification.sendToAll(msg, config.callback);
 
-// notification.sendToAll(msg, callback);
+// notification.sendToUserAccount('ua', msg, config.callback);
 
-// notification.sendToUserAccount('ua', msg, callback);
+// notification.sendToAlias('testAlias', msg, config.callback);
 
-// notification.sendToAlias('testAlias', msg, callback);
-
-// notification.sendToTopic('testTopoc', msg, callback);
+// notification.sendToTopic('testTopoc', msg, config.callback);
