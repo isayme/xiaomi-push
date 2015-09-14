@@ -5,15 +5,13 @@ var config = require('./config');
 
 var s = new Stats({
   appSecret: config.appSecret,
+  production: config.production,
   restrictedPackageName: config.restrictedPackageName
 });
 
 var startDate = moment().subtract(7, 'days').format('YYYYMMDD');
 var endDate = moment().format('YYYYMMDD');
-s.getStats(startDate, endDate, function(err, data) {
-  if (err) {
-    return console.log(err.message, err.code);
-  }
+// s.getStats(startDate, endDate, config.callback);
 
-  console.log(JSON.stringify(data));
-});
+// s.getAliasesOf(config.regids[0], config.callback);
+s.getTopicsOf(config.regids[0], config.callback);
