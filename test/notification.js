@@ -15,7 +15,7 @@ describe('construct', function() {
     });
   });
 
-  it('should return offical api if production is false', function() {
+  it('should return sandbox api if production is false', function() {
     var n = new Notification({
       appSecret: config.appSecret,
       production: false
