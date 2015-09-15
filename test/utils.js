@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var config = require('../example/config');
 var utils = require('../lib/utils');
 
-describe('parseOptions', function() {
+describe('utils.parseOptions', function() {
   it('should throw if no required params', function() {
     var ins = {};
 
@@ -66,6 +66,15 @@ describe('parseOptions', function() {
     expect(ins.options.restrictedPackageName).to.be.equal(config.restrictedPackageName);
   });
 
+  it('should not throw if support sandbox', function() {
+    var ins = {};
+    utils.parseOptions.call(this, {
+      appSecret: config.appSecret
+    }, {
+      supportSandbox: true
+    });
+  });
+
   it('should return default options', function() {
     var ins = {};
     utils.parseOptions.call(ins, {
@@ -76,5 +85,48 @@ describe('parseOptions', function() {
     expect(ins.options.production).to.be.true;
     expect(ins.options.gzip).to.be.true;
     expect(ins.options.timeout).to.be.equal(5000);
-  })
+  });
+
+  it('should return config which user set', function() {
+    var ins = {};
+    utils.parseOptions.call(ins, {
+      appSecret: config.appSecret,
+      production: true,
+      gzip: false,
+      timeout: 50
+    });
+
+    expect(ins.options.production).to.be.true;
+    expect(ins.options.gzip).to.be.false;
+    expect(ins.options.timeout).to.be.equal(50);
+  });
+});
+
+describe('utils.get', function() {
+  it('should return err if appSecret invalid', function(done) {
+    var url = 'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids';
+    var ins = {};
+    utils.parseOptions.call(ins, {
+      appSecret: 'aa',
+      production: true
+    });
+    utils.get.call(ins, url, null, function(err, data) {
+      expect(err).not.to.be.null;
+      done();
+    });
+  });
+
+  it('should return ok if appSecret valid', function(done) {
+    var url = 'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids';
+    var ins = {};
+    utils.parseOptions.call(ins, {
+      appSecret: config.appSecret,
+      production: true
+    });
+    utils.get.call(ins, url, null, function(err, data) {
+      expect(err).to.be.null;
+      expect(data.list).to.be.empty;
+      done();
+    });
+  });
 });
