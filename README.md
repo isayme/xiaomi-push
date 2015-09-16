@@ -10,6 +10,8 @@
 - Stats: 获取发送的消息统计数据
 - Feedback: 获取反馈信息, 比如失效的regId列表. 注: 官方API目前仅支持安卓设备
 - Notification: 通知发送相关
+- Tracer: 状态跟踪
+- Subscription: (取消)订阅标签
 
 # 安装及使用
 
