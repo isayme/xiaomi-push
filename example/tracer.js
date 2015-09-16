@@ -8,7 +8,7 @@ var tracer = new Tracer({
   production: config.production
 });
 
-tracer.getMessageStatus('slm48b03442115760871Zg', config.callback);
+tracer.getMessageStatus('tlm34b91442331669524v5', config.callback);
 
 var startDate = moment().subtract(1, 'days').valueOf();
 var endDate = moment().valueOf();

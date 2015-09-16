@@ -11,7 +11,7 @@ var s = new Stats({
 
 var startDate = moment().subtract(7, 'days').format('YYYYMMDD');
 var endDate = moment().format('YYYYMMDD');
-// s.getStats(startDate, endDate, config.callback);
+s.getStats(startDate, endDate, config.callback);
 
-// s.getAliasesOf(config.regids[0], config.callback);
+s.getAliasesOf(config.regids[0], config.callback);
 s.getTopicsOf(config.regids[0], config.callback);
