@@ -1,6 +1,6 @@
 {
   "name": "xiaomi-push",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "小米推送服务端Node SDK",
   "main": "index.js",
   "directories": {
