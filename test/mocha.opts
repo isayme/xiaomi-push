@@ -1,2 +1,2 @@
---no-timeouts
+--timeout 1000
 --require ./test/chai.js

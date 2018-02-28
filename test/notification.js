@@ -1,8 +1,9 @@
 var _ = require('lodash')
 var expect = require('chai').expect
-var config = require('../example/config')
+var config = require('./config')
 var Message = require('../').Message
 var Notification = require('../').Notification
+var xiaomiMocker = require('./xiaomi-mocker')
 
 var msg = new Message()
 msg
@@ -43,14 +44,8 @@ describe('Notification::construct', function () {
 })
 
 describe('Notification::sendToRegid', function () {
-  it('should fail if send to invalid regid', function (done) {
-    notification.sendToRegid('invalid regid', msg, function (err) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should sucess if send to valid regid', function (done) {
+    xiaomiMocker.notification.sendToRegid()
     notification.sendToRegid(config.regids[0], msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -60,6 +55,7 @@ describe('Notification::sendToRegid', function () {
 
 describe('Notification::sendToAlias', function () {
   it('should sucess if send to alias', function (done) {
+    xiaomiMocker.notification.sendToRegid()
     notification.sendToAlias('aliasName', msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -69,6 +65,7 @@ describe('Notification::sendToAlias', function () {
 
 describe('Notification::sendToTopic', function () {
   it('should sucess if send to topic', function (done) {
+    xiaomiMocker.notification.sendToRegid()
     notification.sendToTopic('topicName', msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -78,6 +75,7 @@ describe('Notification::sendToTopic', function () {
 
 describe('Notification::sendToAll', function () {
   it('should sucess if send to all', function (done) {
+    xiaomiMocker.notification.sendToRegid()
     notification.sendToAll(msg, function (err) {
       expect(err).to.be.null()
       done()

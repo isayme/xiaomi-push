@@ -12,5 +12,21 @@ module.exports = {
           code: 0
         })
     }
+  },
+  notification: {
+    sendToRegid: function () {
+      nock(/.*/)
+        .post(/.*/)
+        .reply(200, {
+          result: 'ok',
+          trace_id: 'Xdm011145198187915406b',
+          code: 0,
+          data: {
+            id: 'sdm01114519818791543og'
+          },
+          description: '成功',
+          info: 'Received push messages for 1 REGID'
+        })
+    }
   }
 }
