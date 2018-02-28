@@ -37,27 +37,38 @@ describe('Subscription::construct', function () {
 describe('Subscription::subscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function * () {
     xiaomiMocker('subscribeTopic')
-    yield subscription.subscribeTopic(config.regids[0], 'subtopic', null)
+    let body = yield subscription.subscribeTopic(
+      config.regids[0],
+      'subtopic',
+      null
+    )
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Subscription::unsubscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function * () {
     xiaomiMocker('subscribeTopic')
-    yield subscription.unsubscribeTopic(config.regids[0], 'subtopic')
+    let body = yield subscription.unsubscribeTopic(config.regids[0], 'subtopic')
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Subscription::subscribeTopicByAlias', function () {
   it('shuold work', function * () {
     xiaomiMocker('subscribeTopic')
-    yield subscription.subscribeTopicByAlias('subalias', 'subtopic')
+    let body = yield subscription.subscribeTopicByAlias('subalias', 'subtopic')
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Subscription::unsubscribeTopicByAlias', function () {
   it('shuold work', function * () {
     xiaomiMocker('subscribeTopic')
-    yield subscription.unsubscribeTopicByAlias('subalias', 'subtopic')
+    let body = yield subscription.unsubscribeTopicByAlias(
+      'subalias',
+      'subtopic'
+    )
+    expect(body.code).to.be.equal(0)
   })
 })

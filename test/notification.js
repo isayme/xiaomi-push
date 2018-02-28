@@ -46,27 +46,31 @@ describe('Notification::construct', function () {
 describe('Notification::sendToRegid', function () {
   it('should sucess if send to valid regid', function * () {
     xiaomiMocker('sendToRegid')
-    yield notification.sendToRegid(config.regids[0], msg)
+    let body = yield notification.sendToRegid(config.regids[0], msg)
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Notification::sendToAlias', function () {
   it('should sucess if send to alias', function * () {
     xiaomiMocker('sendToRegid')
-    yield notification.sendToAlias('aliasName', msg)
+    let body = yield notification.sendToAlias('aliasName', msg)
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Notification::sendToTopic', function () {
   it('should sucess if send to topic', function * () {
     xiaomiMocker('sendToRegid')
-    yield notification.sendToTopic('topicName', msg)
+    let body = yield notification.sendToTopic('topicName', msg)
+    expect(body.code).to.be.equal(0)
   })
 })
 
 describe('Notification::sendToAll', function () {
   it('should sucess if send to all', function * () {
     xiaomiMocker('sendToRegid')
-    yield notification.sendToAll(msg)
+    let body = yield notification.sendToAll(msg)
+    expect(body.code).to.be.equal(0)
   })
 })
