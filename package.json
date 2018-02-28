@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --no-timeouts"
+    "test": "mocha",
+    "lint": "standard",
+    "prettier": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'example/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -32,9 +34,16 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
+    "dirty-chai": "^2.0.1",
     "mocha": "^2.3.0",
     "moment": "^2.20.1",
     "prettier-standard": "^8.0.0",
     "standard": "^11.0.0"
+  },
+  "standard": {
+    "env": [
+      "mocha",
+      "mongo"
+    ]
   }
 }

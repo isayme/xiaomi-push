@@ -1,0 +1,2 @@
+--no-timeouts
+--require ./test/chai.js
