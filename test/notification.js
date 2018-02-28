@@ -45,7 +45,7 @@ describe('Notification::construct', function () {
 
 describe('Notification::sendToRegid', function () {
   it('should sucess if send to valid regid', function (done) {
-    xiaomiMocker.notification.sendToRegid()
+    xiaomiMocker('sendToRegid')
     notification.sendToRegid(config.regids[0], msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -55,7 +55,7 @@ describe('Notification::sendToRegid', function () {
 
 describe('Notification::sendToAlias', function () {
   it('should sucess if send to alias', function (done) {
-    xiaomiMocker.notification.sendToRegid()
+    xiaomiMocker('sendToRegid')
     notification.sendToAlias('aliasName', msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -65,7 +65,7 @@ describe('Notification::sendToAlias', function () {
 
 describe('Notification::sendToTopic', function () {
   it('should sucess if send to topic', function (done) {
-    xiaomiMocker.notification.sendToRegid()
+    xiaomiMocker('sendToRegid')
     notification.sendToTopic('topicName', msg, function (err) {
       expect(err).to.be.null()
       done()
@@ -75,7 +75,7 @@ describe('Notification::sendToTopic', function () {
 
 describe('Notification::sendToAll', function () {
   it('should sucess if send to all', function (done) {
-    xiaomiMocker.notification.sendToRegid()
+    xiaomiMocker('sendToRegid')
     notification.sendToAll(msg, function (err) {
       expect(err).to.be.null()
       done()
