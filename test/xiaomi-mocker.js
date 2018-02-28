@@ -25,7 +25,7 @@ const mockResponse = {
       trace_id: 'Xdm011145198187915406b',
       code: 0,
       data: {
-        id: 'sdm01114519818791543og'
+        id: 'scm51336519827468580b1'
       },
       description: '成功',
       info: 'Received push messages for 1 REGID'
@@ -62,6 +62,55 @@ const mockResponse = {
       code: 0,
       data: { list: ['XXXXXX', 'YYYYY'] },
       description: '成功'
+    }
+  },
+  getMessageStatus: {
+    response: {
+      result: 'ok',
+      trace_id: 'Xcm521145198274755965y',
+      code: 0,
+      data: {
+        data: {
+          create_time: '2018-02-28 22:17:48',
+          invalid_target: 0,
+          raw_counter: 0,
+          click_rate: '0%',
+          delivered: 0,
+          click: 0,
+          bar_closed: 0,
+          device_condition_unmatch: 0,
+          create_timestamp: 1519827468580,
+          time_to_live: '1209600s',
+          msg_type: 'Common',
+          delivery_rate: '0%',
+          id: 'scm51336519827468580b1',
+          resolved: 0,
+          app_not_register: 0
+        }
+      },
+      description: '成功'
+    }
+  },
+  getMessagesStatus: {
+    response: {
+      result: 'ok',
+      trace_id: 'Xcm53586519827658479gh',
+      code: 0,
+      data: {
+        data: [
+        ]
+      }
+    }
+  },
+  getMessageGroupStatus: {
+    response: {
+      result: 'ok',
+      trace_id: 'Xcm53586519827658479gh',
+      code: 0,
+      data: {
+        data: [
+        ]
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ var config = require('../example/config')
 var Message = require('../').Message
 var Tracer = require('../').Tracer
 var Notification = require('../').Notification
+var xiaomiMocker = require('./xiaomi-mocker')
 
 var msg = new Message()
 msg
@@ -37,65 +38,42 @@ describe('Tracer::construct', function () {
 })
 
 describe('Tracer::getMessageStatus', function () {
-  it('should fail if invalid msgId', function (done) {
-    tracer.getMessageStatus('invalid msgid', function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should sucess if valid msgId', function (done) {
     this.timeout(0)
-    notification.sendToRegid(config.regids[0], msg, function (err, data) {
-      expect(err).not.to.be.null()
+    xiaomiMocker('sendToRegid')
+    notification.sendToRegid(config.regids[0], msg, function (err, body) {
+      expect(err).to.be.null()
 
-      var msgid = data.id
-      setTimeout(function () {
-        tracer.getMessageStatus(msgid, function (err, data) {
-          expect(err).to.be.null()
-          expect(data.data.id).to.be.equal(msgid)
-          done()
-        })
-      }, 10000)
+      var msgid = body.data.id
+      xiaomiMocker('getMessageStatus')
+      tracer.getMessageStatus(msgid, function (err, body) {
+        expect(err).to.be.null()
+        expect(body.data.data.id).to.be.equal(msgid)
+        done()
+      })
     })
   })
 })
 
 describe('Tracer::getMessagesStatus', function () {
-  it('should fail if invalid date format', function (done) {
-    var startDate = moment().subtract(1, 'days')
-    var endDate = moment()
-    tracer.getMessagesStatus(startDate, endDate, function (err, data) {
-      expect(err).not.to.be.null()
-
-      // data.data is empty if fail
-      expect(data.data).to.have.length(0)
-      done()
-    })
-  })
-
   it('should success if valid date format', function (done) {
     var startDate = moment()
       .subtract(1, 'days')
       .valueOf()
     var endDate = moment().valueOf()
-    tracer.getMessagesStatus(startDate, endDate, function (err, data) {
+
+    xiaomiMocker('getMessagesStatus')
+    tracer.getMessagesStatus(startDate, endDate, function (err, body) {
       expect(err).to.be.null()
-      expect(data.data).be.instanceof(Array)
+      expect(body.data.data).be.instanceof(Array)
       done()
     })
   })
 })
 
 describe('Tracer::getMessageGroupStatus', function () {
-  it('should fail if invalid jobkey', function (done) {
-    tracer.getMessageGroupStatus('inkj', function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should sucess if valid jobkey', function (done) {
+    xiaomiMocker('getMessagesStatus')
     tracer.getMessageGroupStatus('tjobkey', function (err, data) {
       expect(err).to.be.null()
       done()
