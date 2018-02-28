@@ -66,6 +66,7 @@ describe('Tracer::getMessagesStatus', function () {
 describe('Tracer::getMessageGroupStatus', function () {
   it('should sucess if valid jobkey', function * () {
     xiaomiMocker('getMessagesStatus')
-    yield tracer.getMessageGroupStatus('tjobkey')
+    let body = yield tracer.getMessageGroupStatus('tjobkey')
+    expect(body.code).to.be.equal(0)
   })
 })

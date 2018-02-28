@@ -146,6 +146,7 @@ describe('utils.get', function () {
       production: true
     })
     xiaomiMocker('getInvalidRegIds')
-    yield utils.get.call(ins, url)
+    let body = yield utils.get.call(ins, url)
+    expect(body.code).to.be.equal(0)
   })
 })
