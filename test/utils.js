@@ -1,6 +1,7 @@
 var expect = require('chai').expect
-var config = require('../example/config')
+var config = require('./config')
 var utils = require('../lib/utils')
+var xiaomiMocker = require('./xiaomi-mocker')
 
 describe('utils.parseOptions', function () {
   it('should throw if no required params', function () {
@@ -124,6 +125,7 @@ describe('utils.get', function () {
       appSecret: 'aa',
       production: true
     })
+    xiaomiMocker.invalidSecret()
     utils.get.call(ins, url, null, function (err, data) {
       expect(err).not.to.be.null()
       done()
@@ -138,6 +140,7 @@ describe('utils.get', function () {
       appSecret: config.appSecret,
       production: true
     })
+    xiaomiMocker.feedback.getInvalidRegIds()
     utils.get.call(ins, url, null, function (err, data) {
       expect(err).to.be.null()
       expect(data.list).to.be.empty()

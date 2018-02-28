@@ -1,6 +1,17 @@
 var nock = require('nock')
 
 module.exports = {
+  invalidSecret: function () {
+    nock(/.*/)
+      .get(/.*/)
+      .reply(200, {
+        result: 'error',
+        reason: 'Invalid application secret.',
+        trace_id: 'Xcm545545198200907134i',
+        code: 21301,
+        description: '认证失败'
+      })
+  },
   feedback: {
     getInvalidRegIds: function () {
       nock(/.*/)
