@@ -11,6 +11,9 @@
     "lint": "standard",
     "prettier": "prettier-standard 'lib/**/*.js' 'test/**/*.js' 'example/**/*.js'"
   },
+  "engines": {
+    "node": ">=6"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/isayme/xiaomi-push.git"
