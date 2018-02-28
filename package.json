@@ -37,6 +37,7 @@
     "dirty-chai": "^2.0.1",
     "mocha": "^2.3.0",
     "moment": "^2.20.1",
+    "nock": "^9.2.3",
     "prettier-standard": "^8.0.0",
     "standard": "^11.0.0"
   },
