@@ -28,7 +28,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "lodash": "^3.10.1",
-    "urllib": "^2.4.0"
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",
