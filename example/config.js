@@ -5,7 +5,8 @@ module.exports = {
   regids: [
     'd//igwEhgBGCI2TG6lWqlGn8M1ph6bjr4BtnhCZRe0Rb8+ZP0k6fhlIdnC4N2w7hLrlThrzoYjG9In/wojTjsv0OemEa0YpmoWCTD8X7mCg='
   ],
-  callback: function () {
-    console.log(JSON.stringify(arguments, null, 2))
+  callback: function (err, body) {
+    console.log(err)
+    console.log(JSON.stringify(body, null, 2))
   }
 }

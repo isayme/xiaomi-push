@@ -97,8 +97,7 @@ const mockResponse = {
       trace_id: 'Xcm53586519827658479gh',
       code: 0,
       data: {
-        data: [
-        ]
+        data: []
       }
     }
   },
@@ -108,9 +107,18 @@ const mockResponse = {
       trace_id: 'Xcm53586519827658479gh',
       code: 0,
       data: {
-        data: [
-        ]
+        data: []
       }
+    }
+  },
+  subscribeTopic: {
+    method: 'post',
+    response: {
+      result: 'ok',
+      reason: 'Success',
+      trace_id: 'Xdm00671519828734517Bt',
+      code: 0,
+      description: '成功'
     }
   }
 }
@@ -121,7 +129,8 @@ module.exports = function (apiName) {
     throw new Error(apiName + ' not supported')
   }
   const method = mockConfig.method || 'get'
+  const response = mockConfig.response
   nock(/.*/)
     [method](/.*/)
-    .reply(200, mockConfig.response)
+    .reply(200, response)
 }
