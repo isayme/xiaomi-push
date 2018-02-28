@@ -38,45 +38,34 @@ describe('Tracer::construct', function () {
 })
 
 describe('Tracer::getMessageStatus', function () {
-  it('should sucess if valid msgId', function (done) {
+  it('should sucess if valid msgId', function * () {
     this.timeout(0)
     xiaomiMocker('sendToRegid')
-    notification.sendToRegid(config.regids[0], msg, function (err, body) {
-      expect(err).to.be.null()
+    let body = yield notification.sendToRegid(config.regids[0], msg)
+    var msgid = body.data.id
 
-      var msgid = body.data.id
-      xiaomiMocker('getMessageStatus')
-      tracer.getMessageStatus(msgid, function (err, body) {
-        expect(err).to.be.null()
-        expect(body.data.data.id).to.be.equal(msgid)
-        done()
-      })
-    })
+    xiaomiMocker('getMessageStatus')
+    body = yield tracer.getMessageStatus(msgid)
+    expect(body.data.data.id).to.be.equal(msgid)
   })
 })
 
 describe('Tracer::getMessagesStatus', function () {
-  it('should success if valid date format', function (done) {
+  it('should success if valid date format', function * () {
     var startDate = moment()
       .subtract(1, 'days')
       .valueOf()
     var endDate = moment().valueOf()
 
     xiaomiMocker('getMessagesStatus')
-    tracer.getMessagesStatus(startDate, endDate, function (err, body) {
-      expect(err).to.be.null()
-      expect(body.data.data).be.instanceof(Array)
-      done()
-    })
+    let body = yield tracer.getMessagesStatus(startDate, endDate)
+    expect(body.data.data).be.instanceof(Array)
   })
 })
 
 describe('Tracer::getMessageGroupStatus', function () {
-  it('should sucess if valid jobkey', function (done) {
+  it('should sucess if valid jobkey', function * () {
     xiaomiMocker('getMessagesStatus')
-    tracer.getMessageGroupStatus('tjobkey', function (err, data) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield tracer.getMessageGroupStatus('tjobkey')
   })
 })

@@ -34,39 +34,30 @@ describe('Stats::construct', function () {
 })
 
 describe('Stats::getStats', function () {
-  it('should return sucess of getStats', function (done) {
+  it('should return sucess of getStats', function * () {
     var startDate = moment()
       .subtract(6, 'days')
       .format('YYYYMMDD')
     var endDate = moment().format('YYYYMMDD')
 
     xiaomiMocker('getStats')
-    stats.getStats(startDate, endDate, function (err, body) {
-      expect(err).to.be.null()
-      expect(body.data.data).to.be.instanceOf(Array)
-      done()
-    })
+    let body = yield stats.getStats(startDate, endDate)
+    expect(body.data.data).to.be.instanceOf(Array)
   })
 })
 
 describe('Stats::getAliasesOf', function () {
-  it('should return sucess of getAliasesOf', function (done) {
+  it('should return sucess of getAliasesOf', function * () {
     xiaomiMocker('getAliasesOf')
-    stats.getAliasesOf(config.regids[0], function (err, body) {
-      expect(err).to.be.null()
-      expect(body.data.list).to.be.instanceof(Array)
-      done()
-    })
+    let body = yield stats.getAliasesOf(config.regids[0])
+    expect(body.data.list).to.be.instanceof(Array)
   })
 })
 
 describe('Stats::getTopicsOf', function () {
-  it('should return sucess of getTopicsOf', function (done) {
+  it('should return sucess of getTopicsOf', function * () {
     xiaomiMocker('getAliasesOf')
-    stats.getTopicsOf(config.regids[0], function (err, body) {
-      expect(err).to.be.null()
-      expect(body.data.list).to.be.instanceof(Array)
-      done()
-    })
+    let body = yield stats.getTopicsOf(config.regids[0])
+    expect(body.data.list).to.be.instanceof(Array)
   })
 })

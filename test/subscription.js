@@ -35,53 +35,29 @@ describe('Subscription::construct', function () {
 })
 
 describe('Subscription::subscribeTopic', function () {
-  it('shuold work(the request will pass even regid not valid)', function (done) {
+  it('shuold work(the request will pass even regid not valid)', function * () {
     xiaomiMocker('subscribeTopic')
-    subscription.subscribeTopic(config.regids[0], 'subtopic', null, function (
-      err,
-      body
-    ) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield subscription.subscribeTopic(config.regids[0], 'subtopic', null)
   })
 })
 
 describe('Subscription::unsubscribeTopic', function () {
-  it('shuold work(the request will pass even regid not valid)', function (done) {
+  it('shuold work(the request will pass even regid not valid)', function * () {
     xiaomiMocker('subscribeTopic')
-    subscription.unsubscribeTopic(config.regids[0], 'subtopic', null, function (
-      err,
-      data
-    ) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield subscription.unsubscribeTopic(config.regids[0], 'subtopic')
   })
 })
 
 describe('Subscription::subscribeTopicByAlias', function () {
-  it('shuold work', function (done) {
+  it('shuold work', function * () {
     xiaomiMocker('subscribeTopic')
-    subscription.subscribeTopicByAlias('subalias', 'subtopic', null, function (
-      err,
-      data
-    ) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield subscription.subscribeTopicByAlias('subalias', 'subtopic')
   })
 })
 
 describe('Subscription::unsubscribeTopicByAlias', function () {
-  it('shuold work', function (done) {
+  it('shuold work', function * () {
     xiaomiMocker('subscribeTopic')
-    subscription.unsubscribeTopicByAlias('subalias', 'subtopic', null, function (
-      err,
-      data
-    ) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield subscription.unsubscribeTopicByAlias('subalias', 'subtopic')
   })
 })

@@ -6,6 +6,4 @@ var feedback = new Feedback({
   appSecret: config.appSecret
 })
 
-feedback.request(function (err, list) {
-  console.log(err, JSON.stringify(list, null, 2))
-})
+feedback.request.then(console.log, console.log)

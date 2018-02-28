@@ -5,7 +5,7 @@ var xiaomiMocker = require('./xiaomi-mocker')
 
 var feedback = new Feedback({
   appSecret: config.appSecret,
-  interval: 10000,
+  interval: 0.5,
   production: true
 })
 
@@ -37,12 +37,9 @@ describe('Feedback::start/cancel', function () {
 })
 
 describe('Feedback::getInvalidRegIds', function () {
-  it('should invoke callback if provided', function (done) {
+  it('should ok', function * () {
     xiaomiMocker('getInvalidRegIds')
-    feedback.getInvalidRegIds(function (err, list) {
-      expect(err).to.be.null()
-      expect(list).to.be.instanceof(Array)
-      done()
-    })
+    let list = yield feedback.getInvalidRegIds()
+    expect(list).to.be.instanceof(Array)
   })
 })
