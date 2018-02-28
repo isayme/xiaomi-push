@@ -43,8 +43,7 @@
   },
   "standard": {
     "env": [
-      "mocha",
-      "mongo"
+      "mocha"
     ]
   }
 }
