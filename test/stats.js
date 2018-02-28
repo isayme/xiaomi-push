@@ -34,7 +34,9 @@ describe('Stats::construct', function () {
 
 describe('Stats::getStats', function () {
   it('should return fail of getStats if invalid date', function (done) {
-    var startDate = moment().subtract(6, 'days').format('YYMMDD')
+    var startDate = moment()
+      .subtract(6, 'days')
+      .format('YYMMDD')
     var endDate = moment().format('YYMMDD')
     stats.getStats(startDate, endDate, function (err, data) {
       expect(err).not.to.be.null()
@@ -43,7 +45,9 @@ describe('Stats::getStats', function () {
   })
 
   it('should return sucess of getStats', function (done) {
-    var startDate = moment().subtract(6, 'days').format('YYYYMMDD')
+    var startDate = moment()
+      .subtract(6, 'days')
+      .format('YYYYMMDD')
     var endDate = moment().format('YYYYMMDD')
     stats.getStats(startDate, endDate, function (err, data) {
       expect(err).to.be.null()
