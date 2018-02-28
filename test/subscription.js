@@ -2,18 +2,12 @@ var _ = require('lodash')
 var expect = require('chai').expect
 
 var Subscription = require('..').Subscription
-var Stats = require('..').Stats
 var config = require('../example/config')
+var xiaomiMocker = require('./xiaomi-mocker')
 
 var subscription = new Subscription({
   appSecret: config.appSecret,
   production: config.production
-})
-
-var stats = new Stats({
-  appSecret: config.appSecret,
-  production: config.production,
-  restrictedPackageName: config.restrictedPackageName
 })
 
 describe('Subscription::construct', function () {
@@ -42,38 +36,33 @@ describe('Subscription::construct', function () {
 
 describe('Subscription::subscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function (done) {
+    xiaomiMocker('subscribeTopic')
     subscription.subscribeTopic(config.regids[0], 'subtopic', null, function (
       err,
-      data
+      body
     ) {
       expect(err).to.be.null()
-      stats.getTopicsOf(config.regids[0], function (err, data) {
-        expect(err).to.be.null()
-        expect(data.list).to.include('subtopic')
-        done()
-      })
+      done()
     })
   })
 })
 
 describe('Subscription::unsubscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function (done) {
+    xiaomiMocker('subscribeTopic')
     subscription.unsubscribeTopic(config.regids[0], 'subtopic', null, function (
       err,
       data
     ) {
       expect(err).to.be.null()
-      stats.getTopicsOf(config.regids[0], function (err, data) {
-        expect(err).to.be.null()
-        expect(data.list).not.to.include('subtopic')
-        done()
-      })
+      done()
     })
   })
 })
 
 describe('Subscription::subscribeTopicByAlias', function () {
   it('shuold work', function (done) {
+    xiaomiMocker('subscribeTopic')
     subscription.subscribeTopicByAlias('subalias', 'subtopic', null, function (
       err,
       data
@@ -86,6 +75,7 @@ describe('Subscription::subscribeTopicByAlias', function () {
 
 describe('Subscription::unsubscribeTopicByAlias', function () {
   it('shuold work', function (done) {
+    xiaomiMocker('subscribeTopic')
     subscription.unsubscribeTopicByAlias('subalias', 'subtopic', null, function (
       err,
       data
