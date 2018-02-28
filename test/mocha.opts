@@ -1,2 +1,4 @@
 --timeout 1000
+--exit
+--require co-mocha
 --require ./test/chai.js

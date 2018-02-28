@@ -30,10 +30,12 @@
   "dependencies": {
     "debug": "^2.2.0",
     "lodash": "^3.10.1",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "chai": "^3.2.0",
+    "co-mocha": "^1.2.2",
     "dirty-chai": "^2.0.1",
     "mocha": "^5.0.1",
     "moment": "^2.20.1",

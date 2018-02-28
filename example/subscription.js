@@ -7,4 +7,4 @@ var s = new Subscription({
   restrictedPackageName: config.restrictedPackageName
 })
 
-s.subscribeTopic(config.regids[0], 'a', null, config.callback)
+s.subscribeTopic(config.regids[0], 'a', null).then(console.log, console.log)

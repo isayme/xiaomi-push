@@ -117,7 +117,7 @@ describe('utils.parseOptions', function () {
 })
 
 describe('utils.get', function () {
-  it('should return err if appSecret invalid', function (done) {
+  it('should return err if appSecret invalid', function * () {
     var url =
       'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
     var ins = {}
@@ -126,13 +126,18 @@ describe('utils.get', function () {
       production: true
     })
     xiaomiMocker('invalidSecret')
-    utils.get.call(ins, url, null, function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
+
+    let failed = false
+    try {
+      yield utils.get.call(ins, url)
+    } catch (err) {
+      failed = true
+    }
+
+    expect(failed).to.be.true()
   })
 
-  it('should return ok if appSecret valid', function (done) {
+  it('should return ok if appSecret valid', function * () {
     var url =
       'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
     var ins = {}
@@ -141,10 +146,6 @@ describe('utils.get', function () {
       production: true
     })
     xiaomiMocker('getInvalidRegIds')
-    utils.get.call(ins, url, null, function (err, data) {
-      expect(err).to.be.null()
-      expect(data.list).to.be.empty()
-      done()
-    })
+    yield utils.get.call(ins, url)
   })
 })

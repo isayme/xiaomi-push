@@ -44,41 +44,29 @@ describe('Notification::construct', function () {
 })
 
 describe('Notification::sendToRegid', function () {
-  it('should sucess if send to valid regid', function (done) {
+  it('should sucess if send to valid regid', function * () {
     xiaomiMocker('sendToRegid')
-    notification.sendToRegid(config.regids[0], msg, function (err) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield notification.sendToRegid(config.regids[0], msg)
   })
 })
 
 describe('Notification::sendToAlias', function () {
-  it('should sucess if send to alias', function (done) {
+  it('should sucess if send to alias', function * () {
     xiaomiMocker('sendToRegid')
-    notification.sendToAlias('aliasName', msg, function (err) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield notification.sendToAlias('aliasName', msg)
   })
 })
 
 describe('Notification::sendToTopic', function () {
-  it('should sucess if send to topic', function (done) {
+  it('should sucess if send to topic', function * () {
     xiaomiMocker('sendToRegid')
-    notification.sendToTopic('topicName', msg, function (err) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield notification.sendToTopic('topicName', msg)
   })
 })
 
 describe('Notification::sendToAll', function () {
-  it('should sucess if send to all', function (done) {
+  it('should sucess if send to all', function * () {
     xiaomiMocker('sendToRegid')
-    notification.sendToAll(msg, function (err) {
-      expect(err).to.be.null()
-      done()
-    })
+    yield notification.sendToAll(msg)
   })
 })
