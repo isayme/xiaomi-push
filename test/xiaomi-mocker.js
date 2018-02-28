@@ -36,10 +36,32 @@ const mockResponse = {
       result: 'ok',
       description: '成功',
       data: {
-        data:
-          '[ {"date":"20140428","single_recipients":0,"broadcast_recipients":7689,"received":7026,"click":1703}, {"date":"20140429","single_recipients":0,"broadcast_recipients":5129,"received":4642,"click":1256} ]'
+        data: [
+          {
+            date: '20140428',
+            single_recipients: 0,
+            broadcast_recipients: 7689,
+            received: 7026,
+            click: 1703
+          },
+          {
+            date: '20140429',
+            single_recipients: 0,
+            broadcast_recipients: 5129,
+            received: 4642,
+            click: 1256
+          }
+        ]
       },
       code: 0
+    }
+  },
+  getAliasesOf: {
+    response: {
+      result: 'ok',
+      code: 0,
+      data: { list: ['XXXXXX', 'YYYYY'] },
+      description: '成功'
     }
   }
 }
@@ -50,5 +72,7 @@ module.exports = function (apiName) {
     throw new Error(apiName + ' not supported')
   }
   const method = mockConfig.method || 'get'
-  nock(/.*/)[method](/.*/).reply(200, mockConfig.response)
+  nock(/.*/)
+    [method](/.*/)
+    .reply(200, mockConfig.response)
 }
