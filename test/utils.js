@@ -125,7 +125,7 @@ describe('utils.get', function () {
       appSecret: 'aa',
       production: true
     })
-    xiaomiMocker.invalidSecret()
+    xiaomiMocker('invalidSecret')
     utils.get.call(ins, url, null, function (err, data) {
       expect(err).not.to.be.null()
       done()
@@ -140,7 +140,7 @@ describe('utils.get', function () {
       appSecret: config.appSecret,
       production: true
     })
-    xiaomiMocker.feedback.getInvalidRegIds()
+    xiaomiMocker('getInvalidRegIds')
     utils.get.call(ins, url, null, function (err, data) {
       expect(err).to.be.null()
       expect(data.list).to.be.empty()

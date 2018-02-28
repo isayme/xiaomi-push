@@ -22,7 +22,7 @@ describe('Feedback::construct', function () {
 
 describe('Feedback::start/cancel', function () {
   it('should work ok with start/cancel', function (done) {
-    xiaomiMocker.feedback.getInvalidRegIds()
+    xiaomiMocker('getInvalidRegIds')
     expect(feedback.interval).to.be.undefined()
     feedback.start()
     expect(feedback.interval).to.not.be.undefined()
@@ -38,7 +38,7 @@ describe('Feedback::start/cancel', function () {
 
 describe('Feedback::getInvalidRegIds', function () {
   it('should invoke callback if provided', function (done) {
-    xiaomiMocker.feedback.getInvalidRegIds()
+    xiaomiMocker('getInvalidRegIds')
     feedback.getInvalidRegIds(function (err, list) {
       expect(err).to.be.null()
       expect(list).to.be.instanceof(Array)
