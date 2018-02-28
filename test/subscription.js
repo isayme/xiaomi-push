@@ -42,7 +42,10 @@ describe('Subscription::construct', function () {
 
 describe('Subscription::subscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function (done) {
-    subscription.subscribeTopic(config.regids[0], 'subtopic', null, function (err, data) {
+    subscription.subscribeTopic(config.regids[0], 'subtopic', null, function (
+      err,
+      data
+    ) {
       expect(err).to.be.null()
       stats.getTopicsOf(config.regids[0], function (err, data) {
         expect(err).to.be.null()
@@ -55,7 +58,10 @@ describe('Subscription::subscribeTopic', function () {
 
 describe('Subscription::unsubscribeTopic', function () {
   it('shuold work(the request will pass even regid not valid)', function (done) {
-    subscription.unsubscribeTopic(config.regids[0], 'subtopic', null, function (err, data) {
+    subscription.unsubscribeTopic(config.regids[0], 'subtopic', null, function (
+      err,
+      data
+    ) {
       expect(err).to.be.null()
       stats.getTopicsOf(config.regids[0], function (err, data) {
         expect(err).to.be.null()
@@ -68,7 +74,10 @@ describe('Subscription::unsubscribeTopic', function () {
 
 describe('Subscription::subscribeTopicByAlias', function () {
   it('shuold work', function (done) {
-    subscription.subscribeTopicByAlias('subalias', 'subtopic', null, function (err, data) {
+    subscription.subscribeTopicByAlias('subalias', 'subtopic', null, function (
+      err,
+      data
+    ) {
       expect(err).to.be.null()
       done()
     })
@@ -77,7 +86,10 @@ describe('Subscription::subscribeTopicByAlias', function () {
 
 describe('Subscription::unsubscribeTopicByAlias', function () {
   it('shuold work', function (done) {
-    subscription.unsubscribeTopicByAlias('subalias', 'subtopic', null, function (err, data) {
+    subscription.unsubscribeTopicByAlias('subalias', 'subtopic', null, function (
+      err,
+      data
+    ) {
       expect(err).to.be.null()
       done()
     })

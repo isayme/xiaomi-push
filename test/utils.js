@@ -23,7 +23,7 @@ describe('utils.parseOptions', function () {
     var ins = {}
 
     expect(function () {
-      utils.parseOptions.call(ins, {appSecret: config.appSecret})
+      utils.parseOptions.call(ins, { appSecret: config.appSecret })
     }).to.throw('this feature only vaild in production mode')
   })
 
@@ -43,35 +43,49 @@ describe('utils.parseOptions', function () {
     var ins = {}
 
     expect(function () {
-      utils.parseOptions.call(ins, {
-        appSecret: config.appSecret,
-        production: true
-      }, {
-        requirePackageName: true
-      })
+      utils.parseOptions.call(
+        ins,
+        {
+          appSecret: config.appSecret,
+          production: true
+        },
+        {
+          requirePackageName: true
+        }
+      )
     }).to.throw('options.restrictedPackageName required')
   })
 
   it('should not throw if requirePackageName is true with options', function () {
     var ins = {}
 
-    utils.parseOptions.call(ins, {
-      appSecret: config.appSecret,
-      production: true,
-      restrictedPackageName: config.restrictedPackageName
-    }, {
-      requirePackageName: true
-    })
+    utils.parseOptions.call(
+      ins,
+      {
+        appSecret: config.appSecret,
+        production: true,
+        restrictedPackageName: config.restrictedPackageName
+      },
+      {
+        requirePackageName: true
+      }
+    )
 
-    expect(ins.options.restrictedPackageName).to.be.equal(config.restrictedPackageName)
+    expect(ins.options.restrictedPackageName).to.be.equal(
+      config.restrictedPackageName
+    )
   })
 
   it('should not throw if support sandbox', function () {
-    utils.parseOptions.call(this, {
-      appSecret: config.appSecret
-    }, {
-      supportSandbox: true
-    })
+    utils.parseOptions.call(
+      this,
+      {
+        appSecret: config.appSecret
+      },
+      {
+        supportSandbox: true
+      }
+    )
   })
 
   it('should return default options', function () {
@@ -103,7 +117,8 @@ describe('utils.parseOptions', function () {
 
 describe('utils.get', function () {
   it('should return err if appSecret invalid', function (done) {
-    var url = 'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
+    var url =
+      'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
     var ins = {}
     utils.parseOptions.call(ins, {
       appSecret: 'aa',
@@ -116,7 +131,8 @@ describe('utils.get', function () {
   })
 
   it('should return ok if appSecret valid', function (done) {
-    var url = 'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
+    var url =
+      'https://feedback.xmpush.xiaomi.com/v1/feedback/fetch_invalid_regids'
     var ins = {}
     utils.parseOptions.call(ins, {
       appSecret: config.appSecret,

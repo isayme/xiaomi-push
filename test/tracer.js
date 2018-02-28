@@ -75,7 +75,9 @@ describe('Tracer::getMessagesStatus', function () {
   })
 
   it('should success if valid date format', function (done) {
-    var startDate = moment().subtract(1, 'days').valueOf()
+    var startDate = moment()
+      .subtract(1, 'days')
+      .valueOf()
     var endDate = moment().valueOf()
     tracer.getMessagesStatus(startDate, endDate, function (err, data) {
       expect(err).to.be.null()
