@@ -130,7 +130,7 @@ module.exports = function (apiName) {
   }
   const method = mockConfig.method || 'get'
   const response = mockConfig.response
-  nock(/.*/)
-    [method](/.*/)
-    .reply(200, response)
+
+  const scope = nock(/.*/)
+  scope[method](/.*/).reply(200, response)
 }
