@@ -3,6 +3,7 @@ var expect = require('chai').expect
 
 var Stats = require('..').Stats
 var config = require('../example/config')
+var xiaomiMocker = require('./xiaomi-mocker')
 
 var stats = new Stats({
   appSecret: config.appSecret,
@@ -33,59 +34,38 @@ describe('Stats::construct', function () {
 })
 
 describe('Stats::getStats', function () {
-  it('should return fail of getStats if invalid date', function (done) {
-    var startDate = moment()
-      .subtract(6, 'days')
-      .format('YYMMDD')
-    var endDate = moment().format('YYMMDD')
-    stats.getStats(startDate, endDate, function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should return sucess of getStats', function (done) {
     var startDate = moment()
       .subtract(6, 'days')
       .format('YYYYMMDD')
     var endDate = moment().format('YYYYMMDD')
-    stats.getStats(startDate, endDate, function (err, data) {
+
+    xiaomiMocker('getStats')
+    stats.getStats(startDate, endDate, function (err, body) {
       expect(err).to.be.null()
-      expect(data.data).to.have.length(7)
+      expect(body.data.data).to.be.instanceOf(Array)
       done()
     })
   })
 })
 
 describe('Stats::getAliasesOf', function () {
-  it('should return fail of getAliasesOf if invalid regid', function (done) {
-    stats.getAliasesOf('invalid regid', function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should return sucess of getAliasesOf', function (done) {
-    stats.getAliasesOf(config.regids[0], function (err, data) {
+    xiaomiMocker('getAliasesOf')
+    stats.getAliasesOf(config.regids[0], function (err, body) {
       expect(err).to.be.null()
-      expect(data.list).to.be.instanceof(Array)
+      expect(body.data.list).to.be.instanceof(Array)
       done()
     })
   })
 })
 
 describe('Stats::getTopicsOf', function () {
-  it('should return fail of getTopicsOf if invalid regid', function (done) {
-    stats.getTopicsOf('invalid regid', function (err, data) {
-      expect(err).not.to.be.null()
-      done()
-    })
-  })
-
   it('should return sucess of getTopicsOf', function (done) {
-    stats.getTopicsOf(config.regids[0], function (err, data) {
+    xiaomiMocker('getAliasesOf')
+    stats.getTopicsOf(config.regids[0], function (err, body) {
       expect(err).to.be.null()
-      expect(data.list).to.be.instanceof(Array)
+      expect(body.data.list).to.be.instanceof(Array)
       done()
     })
   })
